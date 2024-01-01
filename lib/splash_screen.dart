@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:unit_converter/responsive/dimensions.dart';
 import 'package:unit_converter/routes/page_routes.dart';
 
@@ -73,12 +74,10 @@ class _SplashScreenState extends State<SplashScreen>
                 RichText(
                   text:  TextSpan(
                     text: 'Unit Converter',
-                    style: TextStyle(
+                    style: GoogleFonts.ubuntu(
                       color: Colors.white,
                       fontSize: Dimensions.updateDimensions(context, 'w', 35),
-                      fontWeight: FontWeight.w500,
-
-
+                      fontWeight: FontWeight.w300,
                     ),
                   ),
                 ),

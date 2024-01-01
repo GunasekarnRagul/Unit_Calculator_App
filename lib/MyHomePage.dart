@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:unit_converter/responsive/dimensions.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -25,13 +26,18 @@ class _MyHomePageState extends State<MyHomePage> {
             size: Dimensions.updateDimensions(context, 'w', 45),
           ),
         ),
-        title: Text('Unit Converter',
-            style: TextStyle(
+        title: RichText(
+          text: TextSpan(
+            text: 'Unit Converter',
+            style: GoogleFonts.ubuntu(
                 color: Colors.white,
-                fontSize: Dimensions.updateDimensions(context, 'w', 20))),
+                fontWeight: FontWeight.w300,
+                fontSize: Dimensions.updateDimensions(context, 'w', 20)),
+          ),
+        ),
         backgroundColor: Colors.black,
         bottom: PreferredSize(
-          preferredSize:  Size.fromHeight(Dimensions.updateDimensions(
+          preferredSize: Size.fromHeight(Dimensions.updateDimensions(
               context, 'h', 1.0)), // Set the height of the white line
           child: Container(
             color: Colors.white,
@@ -39,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
-      body:  const Scaffold(
+      body: const Scaffold(
         backgroundColor: Colors.black,
         body: Padding(
           padding: EdgeInsets.fromLTRB(20, 50, 20, 10),
@@ -47,10 +53,10 @@ class _MyHomePageState extends State<MyHomePage> {
             spacing: 10,
             runSpacing: 10,
             children: [
-
-              icons( icon: Icons.cake, text: 'AGE',),
-
-
+              icons(
+                icon: Icons.cake,
+                text: 'AGE',
+              ),
             ],
           ),
         ),
@@ -60,10 +66,12 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class icons extends StatelessWidget {
-  final IconData icon ;
+  final IconData icon;
   final String text;
   const icons({
-    super.key, required this.icon, required this.text,
+    super.key,
+    required this.icon,
+    required this.text,
   });
 
   @override
@@ -71,18 +79,26 @@ class icons extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-         Icon(icon,color: Colors.grey,
-        size: Dimensions.updateDimensions(context, 'w', 35),),
+        Icon(
+          icon,
+          color: Colors.grey,
+          size: Dimensions.updateDimensions(context, 'w', 35),
+        ),
         SizedBox(
           height: Dimensions.updateDimensions(context, 'h', 5),
         ),
-        Text(text,style: TextStyle(
-          fontSize: Dimensions.updateDimensions(context, 'w', 15,
-          ),
-          letterSpacing: 1,
-          color: Colors.white,
-
-        ),)
+        RichText(
+            text: TextSpan(
+                text: text,
+                style: GoogleFonts.ubuntu(
+                    fontSize: Dimensions.updateDimensions(
+                      context,
+                      'w',
+                      12,
+                    ),
+                    letterSpacing: 1,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w100))),
       ],
     );
   }
