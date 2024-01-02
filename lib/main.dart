@@ -22,15 +22,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
         useMaterial3: true,
         fontFamily: "Google Sans Text, Roboto, sans-serif",
-
       ),
-      home: const Age(),
-
+      home: Age(),
     );
   }
 }
-
-
-
-
-

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 class RouteGenerator {
   static Route createRoute(Widget destination) {
-
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => destination,
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
@@ -10,7 +9,8 @@ class RouteGenerator {
         const end = Offset.zero;
         const curve = Curves.ease;
 
-        var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
         return SlideTransition(
           position: animation.drive(tween),
@@ -21,7 +21,6 @@ class RouteGenerator {
   }
 
   static Route createRouteBack(Widget destination) {
-
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => destination,
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
@@ -29,7 +28,8 @@ class RouteGenerator {
         const end = Offset.zero;
         const curve = Curves.ease;
 
-        var tween = Tween(begin: end, end: begin).chain(CurveTween(curve: curve));
+        var tween =
+            Tween(begin: end, end: begin).chain(CurveTween(curve: curve));
 
         return SlideTransition(
           position: animation.drive(tween),
@@ -38,5 +38,4 @@ class RouteGenerator {
       },
     );
   }
-
 }

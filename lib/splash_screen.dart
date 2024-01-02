@@ -37,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     _controller.forward();
 
-    Timer(const Duration(milliseconds: 3990 ), () {
+    Timer(const Duration(milliseconds: 3990), () {
       Navigator.pushReplacement(
           context, RouteGenerator.createRoute(const MyHomePage()));
     });
@@ -57,7 +57,8 @@ class _SplashScreenState extends State<SplashScreen>
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(Dimensions.updateDimensions(context, 'w', 20)),
+                  borderRadius: BorderRadius.circular(
+                      Dimensions.updateDimensions(context, 'w', 20)),
                   child: Container(
                     height: Dimensions.updateDimensions(context, 'h', 200),
                     width: Dimensions.updateDimensions(context, 'w', 200),
@@ -65,14 +66,13 @@ class _SplashScreenState extends State<SplashScreen>
                       image: DecorationImage(
                         image: AssetImage('images/splash_screen_logo.png'),
                         fit: BoxFit.contain,
-
                       ),
                     ),
                   ),
                 ),
-                 SizedBox(height: Dimensions.updateDimensions(context, 'h', 30)),
+                SizedBox(height: Dimensions.updateDimensions(context, 'h', 30)),
                 RichText(
-                  text:  TextSpan(
+                  text: TextSpan(
                     text: 'Unit Converter',
                     style: GoogleFonts.ubuntu(
                       color: Colors.white,
@@ -81,12 +81,12 @@ class _SplashScreenState extends State<SplashScreen>
                     ),
                   ),
                 ),
-                 SizedBox(height: Dimensions.updateDimensions(context, 'h', 35)),
+                SizedBox(height: Dimensions.updateDimensions(context, 'h', 35)),
                 AnimatedBuilder(
                   animation: _controller,
                   builder: (context, child) {
                     return CircularProgressIndicator(
-                      strokeWidth:  Dimensions.updateDimensions(context, 'w', 2),
+                      strokeWidth: Dimensions.updateDimensions(context, 'w', 2),
                       color: Colors.blueGrey,
                       value: _controller.value,
                     );

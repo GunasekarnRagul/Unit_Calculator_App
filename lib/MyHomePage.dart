@@ -58,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   text: 'AGE',
                   function: () {
                     Navigator.pushReplacement(
-                        context, RouteGenerator.createRoute(const Age()));
+                        context, RouteGenerator.createRoute(Age()));
                   }),
             ],
           ),
