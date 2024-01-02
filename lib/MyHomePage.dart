@@ -1,8 +1,8 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:unit_converter/cal_properties/age.dart';
 import 'package:unit_converter/responsive/dimensions.dart';
+import 'package:unit_converter/routes/page_routes.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -45,18 +45,21 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
-      body: const Scaffold(
+      body: Scaffold(
         backgroundColor: Colors.black,
         body: Padding(
-          padding: EdgeInsets.fromLTRB(20, 50, 20, 10),
+          padding: const EdgeInsets.fromLTRB(20, 50, 20, 10),
           child: Wrap(
             spacing: 10,
             runSpacing: 10,
             children: [
               icons(
-                icon: Icons.cake,
-                text: 'AGE',
-              ),
+                  icon: Icons.cake,
+                  text: 'AGE',
+                  function: () {
+                    Navigator.pushReplacement(
+                        context, RouteGenerator.createRoute(const Age()));
+                  }),
             ],
           ),
         ),
@@ -68,38 +71,43 @@ class _MyHomePageState extends State<MyHomePage> {
 class icons extends StatelessWidget {
   final IconData icon;
   final String text;
+  final Function function;
   const icons({
     super.key,
     required this.icon,
     required this.text,
+    required this.function,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(
-          icon,
-          color: Colors.grey,
-          size: Dimensions.updateDimensions(context, 'w', 35),
-        ),
-        SizedBox(
-          height: Dimensions.updateDimensions(context, 'h', 5),
-        ),
-        RichText(
-            text: TextSpan(
-                text: text,
-                style: GoogleFonts.ubuntu(
-                    fontSize: Dimensions.updateDimensions(
-                      context,
-                      'w',
-                      12,
-                    ),
-                    letterSpacing: 1,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w100))),
-      ],
+    return GestureDetector(
+      onTap: function as void Function(),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            icon,
+            color: Colors.grey,
+            size: Dimensions.updateDimensions(context, 'w', 35),
+          ),
+          SizedBox(
+            height: Dimensions.updateDimensions(context, 'h', 5),
+          ),
+          RichText(
+              text: TextSpan(
+                  text: text,
+                  style: GoogleFonts.ubuntu(
+                      fontSize: Dimensions.updateDimensions(
+                        context,
+                        'w',
+                        12,
+                      ),
+                      letterSpacing: 1,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w100))),
+        ],
+      ),
     );
   }
 }
