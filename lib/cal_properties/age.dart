@@ -84,7 +84,7 @@ class _AgeState extends State<Age> {
       widget.summaryYear = years.toString();
       widget.summaryMonths = (years * 12 + months).toString();
       widget.summaryWeeks = weeks.toString();
-      widget.summaryDays =( years * 365 + remainingDays).toString();
+      widget.summaryDays = (years * 365 + remainingDays).toString();
       widget.summaryHours = difference.inHours.toString();
       widget.summaryMinutes = difference.inMinutes.toString();
     });
@@ -185,9 +185,9 @@ class _AgeState extends State<Age> {
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.fromLTRB(
-              Dimensions.updateDimensions(context, 'h', 30),
+              Dimensions.updateDimensions(context, 'h', 10),
               Dimensions.updateDimensions(context, 'h', 40),
-              Dimensions.updateDimensions(context, 'w', 30),
+              Dimensions.updateDimensions(context, 'w', 10),
               Dimensions.updateDimensions(context, 'h', 10)),
           child: Column(
             children: [
@@ -386,7 +386,7 @@ class _AgeState extends State<Age> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         summary(context, 'Days', widget.summaryDays, 10),
-                        summary(context, 'Hours',widget.summaryHours, 10),
+                        summary(context, 'Hours', widget.summaryHours, 10),
                         summary(context, 'Minutes', widget.summaryMinutes, 10),
                       ],
                     ),
