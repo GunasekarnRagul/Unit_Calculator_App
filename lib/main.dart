@@ -24,8 +24,9 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: "Google Sans Text, Roboto, sans-serif",
       ),
-      home: Length(),
+      home: SplashScreen(),
     );
   }
 }
+
 
