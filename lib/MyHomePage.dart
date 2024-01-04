@@ -4,6 +4,8 @@ import 'package:unit_converter/cal_properties/age.dart';
 import 'package:unit_converter/responsive/dimensions.dart';
 import 'package:unit_converter/routes/page_routes.dart';
 
+import 'cal_properties/Length.dart';
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
@@ -49,19 +51,60 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.black,
         body: Padding(
           padding: const EdgeInsets.fromLTRB(20, 50, 20, 10),
-          child: Wrap(
-            spacing: 10,
-            runSpacing: 10,
+          child: Column(
             children: [
-              icons(
-                  icon: Icons.cake,
-                  text: 'AGE',
-                  function: () {
-                    Navigator.pushReplacement(
-                        context, RouteGenerator.createRoute(Age()));
-                  }),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  icons(
+                      icon: Icons.cake,
+                      text: 'AGE',
+                      function: () {
+                        Navigator.pushReplacement(
+                            context, RouteGenerator.createRoute(Age()));
+                      }),
+                  icons(icon: Icons.leaderboard,
+                      text: 'Length', function: ()
+                      {
+                        Navigator.pushReplacement(context, RouteGenerator.createRoute(const Length()));
+                      }),
+
+                  icons(icon: Icons.leaderboard,
+                      text: 'Length', function: ()
+                      {
+                        Navigator.pushReplacement(context, RouteGenerator.createRoute(Length()));
+                      }),
+                ],
+              ),
+              SizedBox(
+                height: Dimensions.updateDimensions(context, 'h', 50),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                children: [
+                  icons(
+                      icon: Icons.cake,
+                      text: 'AGE',
+                      function: () {
+                        Navigator.pushReplacement(
+                            context, RouteGenerator.createRoute(Age()));
+                      }),
+                  icons(icon: Icons.leaderboard,
+                      text: 'Length', function: ()
+                      {
+                        Navigator.pushReplacement(context, RouteGenerator.createRoute(Length()));
+                      }),
+
+                  icons(icon: Icons.leaderboard,
+                      text: 'Length', function: ()
+                      {
+                        Navigator.pushReplacement(context, RouteGenerator.createRoute(Length()));
+                      }),
+                ],
+              ),
             ],
-          ),
+          )
         ),
       ),
     );
