@@ -30,6 +30,9 @@ class Age extends StatefulWidget {
   dynamic summaryHours;
   dynamic summaryMinutes;
 
+  Color dateOfBirthColor = Colors.white;
+  Color todayColor = Colors.white;
+
   @override
   State<Age> createState() => _AgeState();
 }
@@ -76,9 +79,9 @@ class _AgeState extends State<Age> {
     int remainingDays = difference.inDays % 365;
     int months = (remainingDays / 30).floor();
     int weeks = (difference.inDays / 7).floor(); // Corrected line
-    int days = remainingDays % 7;
-    int hours = difference.inHours % 24;
-    int minutes = difference.inMinutes % 60;
+    // int days = remainingDays % 7;
+    // int hours = difference.inHours % 24;
+    // int minutes = difference.inMinutes % 60;
 
     setState(() {
       widget.summaryYear = years.toString();
@@ -449,27 +452,56 @@ class _AgeState extends State<Age> {
         GestureDetector(
           onTap: () {
             _openDatePicker(context, tittleText);
+            _textColorChange(tittleText);
           },
           child: Row(
             children: [
               RichText(
                   text: TextSpan(
                       text:
-                          DateFormat('dd-MMM-yyyy').format(dateText).toString(),
+                      DateFormat('dd-MMM-yyyy').format(dateText).toString(),
                       style: GoogleFonts.ubuntu(
                           fontSize:
-                              Dimensions.updateDimensions(context, 'w', 15),
+                          Dimensions.updateDimensions(context, 'w', 15),
                           fontWeight: FontWeight.w100,
-                          color: Colors.white))),
+                          color: (tittleText == 'Today')? widget.todayColor: widget.dateOfBirthColor))),
               Icon(
                 Icons.arrow_drop_down,
-                color: Colors.white,
+                color: (tittleText == 'Today')? widget.todayColor: widget.dateOfBirthColor,
                 size: Dimensions.updateDimensions(context, 'w', 15),
-              )
+              ),
+
             ],
           ),
         ),
       ],
     );
+  }
+
+  void _textColorChange(String tittleText) {
+
+
+        if(tittleText == 'Today')
+          {
+            setState(() {
+              widget.todayColor = Colors.deepOrange;
+              widget.dateOfBirthColor = Colors.white;
+            });
+
+
+          }
+        else if(tittleText == 'Date Of Birth')
+          {
+            setState(() {
+              widget.todayColor = Colors.white;
+              widget.dateOfBirthColor = Colors.deepOrange;
+
+            });
+
+          }
+
+
+
+
   }
 }
