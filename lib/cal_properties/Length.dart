@@ -52,7 +52,7 @@ class _LengthState extends State<Length> {
   };
 
   late String lengthUnitUp = 'KM';
-  late String lengthUnitDowm = 'KM';
+  late String lengthUnitDowm = 'CM';
 
   late String lengthUnitUpText = 'KiloMeter';
   late String lengthUnitDowmText = 'KiloMeter';
@@ -64,6 +64,33 @@ class _LengthState extends State<Length> {
 
   late String calUpText = '0';
   late String calDownText = '0';
+
+  String getKeyByValue(Map<String, String> map, String value) {
+    return map.entries
+        .firstWhere((entry) => entry.value == value,
+            orElse: () => const MapEntry('', ''))
+        .key;
+  }
+
+  double convertLength(
+      double initialValue, String initialUnit, String targetUnit) {
+    Map<String, double> conversionFactors = {
+      '0': 1000.0, // 1 Kilometer = 1000 Meters
+      '1': 100.0, // 1 Decimeter = 0.1 Meters
+      '2': 1.0, // 1 Centimeter = 0.01 Meters
+      '3': 0.001, // 1 Millimeter = 0.001 Meters
+      '4': 0.000001, // 1 Micrometer = 0.000001 Meters
+      '5': 1.0e-12, // 1 Pico-meter = 1.0e-12 Meters
+      '6': 1852.0, // 1 Nautical Mile = 1852 Meters
+      '7': 1609.34, // 1 Mile = 1609.34 Meters
+      '8': 201.168 // 1 Furlong = 201.168 Meters
+    };
+
+    double initialValueInMeters =
+        initialValue / conversionFactors[initialUnit]!;
+    double result = initialValueInMeters * conversionFactors[targetUnit]!;
+    return result;
+  }
 
   void _openPickerWithCustomPickerTextStyle(
       BuildContext context, String place) {
@@ -91,7 +118,7 @@ class _LengthState extends State<Length> {
         // print(index);
 
         setState(() {
-          setState(() {
+
             if (place == 'up') {
               lengthUnitUp = lenghtvalUnit[index.toString()]!;
               lengthUnitUpText = lenghtvalText[index.toString()]!;
@@ -99,8 +126,24 @@ class _LengthState extends State<Length> {
               lengthUnitDowm = lenghtvalUnit[index.toString()]!;
               lengthUnitDowmText = lenghtvalText[index.toString()]!;
             }
-          });
         });
+
+
+        String upKey = getKeyByValue(lenghtvalUnit, lengthUnitUp);
+        String downKey = getKeyByValue(lenghtvalUnit, lengthUnitDowm);
+        if (upText == 'up') {
+          double result = convertLength(double.parse(calUpText), upKey, downKey);
+
+          setState(() {
+            calDownText = result.toString();
+          });
+        } else if (upText == 'down') {
+          setState(() {
+            double result =
+            convertLength(double.parse(calDownText), downKey, upKey);
+            calUpText = result.toString();
+          });
+        }
       },
       onSubmit: (index) {
         setState(() {
@@ -112,6 +155,23 @@ class _LengthState extends State<Length> {
             lengthUnitDowmText = lenghtvalText[index.toString()]!;
           }
         });
+
+
+        String upKey = getKeyByValue(lenghtvalUnit, lengthUnitUp);
+        String downKey = getKeyByValue(lenghtvalUnit, lengthUnitDowm);
+        if (upText == 'up') {
+          double result = convertLength(double.parse(calUpText), upKey, downKey);
+
+          setState(() {
+            calDownText = result.toString();
+          });
+        } else if (upText == 'down') {
+          setState(() {
+            double result =
+            convertLength(double.parse(calDownText), downKey, upKey);
+            calUpText = result.toString();
+          });
+        }
       },
       closeIconColor: Colors.white,
     ).show(context);
@@ -418,6 +478,23 @@ class _LengthState extends State<Length> {
         calDownText += text;
       }
     });
+
+    String upKey = getKeyByValue(lenghtvalUnit, lengthUnitUp);
+    String downKey = getKeyByValue(lenghtvalUnit, lengthUnitDowm);
+
+    if (upText == 'up') {
+      double result = convertLength(double.parse(calUpText), upKey, downKey);
+
+      setState(() {
+        calDownText = result.toString();
+      });
+    } else if (upText == 'down') {
+      setState(() {
+        double result =
+            convertLength(double.parse(calDownText), downKey, upKey);
+        calUpText = result.toString();
+      });
+    }
   }
 
   _allClearText() {
@@ -439,5 +516,21 @@ class _LengthState extends State<Length> {
         calDownText = '0'; // Set to '0' when the length is 1
       }
     });
+
+    String upKey = getKeyByValue(lenghtvalUnit, lengthUnitUp);
+    String downKey = getKeyByValue(lenghtvalUnit, lengthUnitDowm);
+    if (upText == 'up') {
+      double result = convertLength(double.parse(calUpText), upKey, downKey);
+
+      setState(() {
+        calDownText = result.toString();
+      });
+    } else if (upText == 'down') {
+      setState(() {
+        double result =
+        convertLength(double.parse(calDownText), downKey, upKey);
+        calUpText = result.toString();
+      });
+    }
   }
 }
