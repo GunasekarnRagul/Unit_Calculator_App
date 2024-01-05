@@ -42,181 +42,188 @@ class _LengthState extends State<Length> {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
         backgroundColor: Colors.black,
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            // Navigator.pushReplacement(context, RouteGenerator.createRouteBack(const MyHomePage()));
-            Navigator.push(
-                context, RouteGenerator.createRoute(const MyHomePage()));
-          },
-          icon: const Icon(
-            Icons.arrow_back_rounded,
-            color: Colors.white,
-          ),
-        ),
-        title: RichText(
-          text: TextSpan(
-            text: 'Length',
-            style: GoogleFonts.ubuntu(
-                color: Colors.white,
-                fontWeight: FontWeight.w300,
-                fontSize: Dimensions.updateDimensions(context, 'w', 20)),
-          ),
-        ),
-      ),
-      body: Column(
-        children: [
-          Container(
-            padding: EdgeInsets.fromLTRB(
-                Dimensions.updateDimensions(context, 'h', 10),
-                Dimensions.updateDimensions(context, 'h', 40),
-                Dimensions.updateDimensions(context, 'w', 10),
-                Dimensions.updateDimensions(context, 'h', 10)),
-            child: Column(
-              children: [
-                buildRow(context),
-                SizedBox(
-                  height: Dimensions.updateDimensions(context, 'h', 25),
-                ),
-                buildRow(context),
-                SizedBox(
-                  height: Dimensions.updateDimensions(context, 'h', 50),
-                ),
-                Container(
-                  width: double.infinity,
-                  height: 0.5,
-                  color: Colors.grey, // Set the color of the line
-                ),
-                SizedBox(
-                  height: Dimensions.updateDimensions(context, 'h', 20),
-                ),
-              ],
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+          centerTitle: true,
+          leading: IconButton(
+            onPressed: () {
+              // Navigator.pushReplacement(context, RouteGenerator.createRouteBack(const MyHomePage()));
+              Navigator.push(
+                  context, RouteGenerator.createRoute(const MyHomePage()));
+            },
+            icon: const Icon(
+              Icons.arrow_back_rounded,
+              color: Colors.white,
             ),
           ),
-          Stack(
-            children: [
-              Positioned(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-
-                    SizedBox(
-                      width: screenWidth * 0.70,
-                      // color: Colors.red,
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              buildTextButton(context, '7', () => {}),
-                              buildTextButton(context, '8', () => {}),
-                              buildTextButton(context, '9', () => {}),
-                            ],
-                          ),
-                          SizedBox(
-                            height: Dimensions.updateDimensions(context, 'h', 25),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              buildTextButton(context, '4', () => {}),
-                              buildTextButton(context, '5', () => {}),
-                              buildTextButton(context, '6', () => {}),
-                            ],
-                          ),
-                          SizedBox(
-                            height: Dimensions.updateDimensions(context, 'h', 25),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              buildTextButton(context, '1', () => {}),
-                              buildTextButton(context, '2', () => {}),
-                              buildTextButton(context, '3', () => {}),
-                            ],
-                          ),
-                          SizedBox(
-                            height: Dimensions.updateDimensions(context, 'h', 25),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              buildTextButton(context, '', () => {}),
-                              buildTextButton(context, '0', () => {}),
-                              buildTextButton(context, '.', () => {}),
-                            ],
-                          ),
-                        ],
-                      ),
+          title: RichText(
+            text: TextSpan(
+              text: 'Length',
+              style: GoogleFonts.ubuntu(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w300,
+                  fontSize: Dimensions.updateDimensions(context, 'w', 20)),
+            ),
+          ),
+        ),
+        body: Stack(
+          children: [
+            Positioned(
+              bottom: 0, // Align to the bottom of the stack
+              left: 0, // Align to the left of the stack
+              right: 0,
+              child: Column(
+                children: [
+                  Container(
+                    padding: EdgeInsets.fromLTRB(
+                        Dimensions.updateDimensions(context, 'h', 10),
+                        Dimensions.updateDimensions(context, 'h', 40),
+                        Dimensions.updateDimensions(context, 'w', 10),
+                        Dimensions.updateDimensions(context, 'h', 10)),
+                    child: Column(
+                      children: [
+                        buildRow(context),
+                        SizedBox(
+                          height: Dimensions.updateDimensions(context, 'h', 25),
+                        ),
+                        buildRow(context),
+                        SizedBox(
+                          height: Dimensions.updateDimensions(context, 'h', 50),
+                        ),
+                        Container(
+                          width: double.infinity,
+                          height: 0.5,
+                          color: Colors.grey, // Set the color of the line
+                        ),
+                        SizedBox(
+                          height: Dimensions.updateDimensions(context, 'h', 20),
+                        ),
+                      ],
                     ),
-                    SizedBox(
-                      width: screenWidth * 0.19,
-                      // color: Colors.green,
-                      child: Column(
-                        children: [
-                          TextButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.white,
-                              backgroundColor: Colors.white10, // Text color
-                              minimumSize: Size(
-                                Dimensions.updateDimensions(
-                                    context, 'w', double.infinity), // Set width
-                                Dimensions.updateDimensions(
-                                    context, 'h', 130), // Set height
-                              ),
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 1.0, vertical: 0.0), // Adjust padding
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      SizedBox(
+                        width: screenWidth * 0.70,
+                        // color: Colors.red,
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                buildTextButton(context, '7', () => {}),
+                                buildTextButton(context, '8', () => {}),
+                                buildTextButton(context, '9', () => {}),
+                              ],
                             ),
-                            child: RichText(
-                              text: TextSpan(
-                                text: 'AC',
-                                style: GoogleFonts.ubuntu(
-                                    color: Colors.deepOrange,
-                                    fontWeight: FontWeight.w300,
-                                    fontSize: Dimensions.updateDimensions(
-                                        context, 'w', 20)),
-                              ),
+                            SizedBox(
+                              height:
+                                  Dimensions.updateDimensions(context, 'h', 25),
                             ),
-                          ),
-                          SizedBox(
-                            height: Dimensions.updateDimensions(context, 'h', 20),
-                          ),
-                          TextButton(
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                buildTextButton(context, '4', () => {}),
+                                buildTextButton(context, '5', () => {}),
+                                buildTextButton(context, '6', () => {}),
+                              ],
+                            ),
+                            SizedBox(
+                              height:
+                                  Dimensions.updateDimensions(context, 'h', 25),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                buildTextButton(context, '1', () => {}),
+                                buildTextButton(context, '2', () => {}),
+                                buildTextButton(context, '3', () => {}),
+                              ],
+                            ),
+                            SizedBox(
+                              height:
+                                  Dimensions.updateDimensions(context, 'h', 25),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                buildTextButton(context, '', () => {}),
+                                buildTextButton(context, '0', () => {}),
+                                buildTextButton(context, '.', () => {}),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        width: screenWidth * 0.19,
+                        // color: Colors.green,
+                        child: Column(
+                          children: [
+                            TextButton(
                               onPressed: () {},
                               style: ElevatedButton.styleFrom(
                                 foregroundColor: Colors.white,
                                 backgroundColor: Colors.white10, // Text color
                                 minimumSize: Size(
                                   Dimensions.updateDimensions(
-                                      context, 'w', double.infinity), // Set width
+                                      context, 'w', 70), // Set width
                                   Dimensions.updateDimensions(
                                       context, 'h', 130), // Set height
                                 ),
                                 padding: const EdgeInsets.symmetric(
-                                    horizontal: 1.0, vertical: 0.0), // Adjust padding
+                                    horizontal: 1.0,
+                                    vertical: 0.0), // Adjust padding
                               ),
-                              child: IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.cancel_presentation_outlined,
-                                  color: Colors.deepOrange,
+                              child: RichText(
+                                text: TextSpan(
+                                  text: 'AC',
+                                  style: GoogleFonts.ubuntu(
+                                      color: Colors.deepOrange,
+                                      fontWeight: FontWeight.w300,
+                                      fontSize: Dimensions.updateDimensions(
+                                          context, 'w', 20)),
                                 ),
-                              )),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              )
-            ],
-          )
-        ],
-      ),
-    );
+                              ),
+                            ),
+                            SizedBox(
+                              height:
+                                  Dimensions.updateDimensions(context, 'h', 20),
+                            ),
+                            TextButton(
+                                onPressed: () {},
+                                style: ElevatedButton.styleFrom(
+                                  foregroundColor: Colors.white,
+                                  backgroundColor: Colors.white10, // Text color
+                                  minimumSize: Size(
+                                    Dimensions.updateDimensions(
+                                        context, 'w', 70), // Set width
+                                    Dimensions.updateDimensions(
+                                        context, 'h', 130), // Set height
+                                  ),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 1.0,
+                                      vertical: 0.0), // Adjust padding
+                                ),
+                                child: IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(
+                                    Icons.cancel_presentation_outlined,
+                                    color: Colors.deepOrange,
+                                  ),
+                                )),
+                          ],
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            )
+          ],
+        ));
   }
 
   Opacity buildTextButton(
