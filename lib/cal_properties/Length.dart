@@ -118,32 +118,16 @@ class _LengthState extends State<Length> {
         // print(index);
 
         setState(() {
-
-            if (place == 'up') {
-              lengthUnitUp = lenghtvalUnit[index.toString()]!;
-              lengthUnitUpText = lenghtvalText[index.toString()]!;
-            } else if (place == 'down') {
-              lengthUnitDowm = lenghtvalUnit[index.toString()]!;
-              lengthUnitDowmText = lenghtvalText[index.toString()]!;
-            }
+          if (place == 'up') {
+            lengthUnitUp = lenghtvalUnit[index.toString()]!;
+            lengthUnitUpText = lenghtvalText[index.toString()]!;
+          } else if (place == 'down') {
+            lengthUnitDowm = lenghtvalUnit[index.toString()]!;
+            lengthUnitDowmText = lenghtvalText[index.toString()]!;
+          }
         });
 
-
-        String upKey = getKeyByValue(lenghtvalUnit, lengthUnitUp);
-        String downKey = getKeyByValue(lenghtvalUnit, lengthUnitDowm);
-        if (upText == 'up') {
-          double result = convertLength(double.parse(calUpText), upKey, downKey);
-
-          setState(() {
-            calDownText = result.toString();
-          });
-        } else if (upText == 'down') {
-          setState(() {
-            double result =
-            convertLength(double.parse(calDownText), downKey, upKey);
-            calUpText = result.toString();
-          });
-        }
+        _calculateLength();
       },
       onSubmit: (index) {
         setState(() {
@@ -156,22 +140,7 @@ class _LengthState extends State<Length> {
           }
         });
 
-
-        String upKey = getKeyByValue(lenghtvalUnit, lengthUnitUp);
-        String downKey = getKeyByValue(lenghtvalUnit, lengthUnitDowm);
-        if (upText == 'up') {
-          double result = convertLength(double.parse(calUpText), upKey, downKey);
-
-          setState(() {
-            calDownText = result.toString();
-          });
-        } else if (upText == 'down') {
-          setState(() {
-            double result =
-            convertLength(double.parse(calDownText), downKey, upKey);
-            calUpText = result.toString();
-          });
-        }
+        _calculateLength();
       },
       closeIconColor: Colors.white,
     ).show(context);
@@ -469,6 +438,11 @@ class _LengthState extends State<Length> {
   }
 
   _btnClicked(String text) {
+    if (lengthUpTextColor == Colors.deepOrange) {
+      (calUpText.isNotEmpty) ? calUpText = '0' : calUpText = '';
+    } else if (lengthDownTextColor == Colors.deepOrange) {
+      (calDownText.isNotEmpty) ? calDownText = '0' : calDownText = '';
+    }
     setState(() {
       calUpText == '0' && upText == 'up' ? calUpText = '' : null;
       calDownText == '0' && upText == 'down' ? calDownText = "" : null;
@@ -479,22 +453,7 @@ class _LengthState extends State<Length> {
       }
     });
 
-    String upKey = getKeyByValue(lenghtvalUnit, lengthUnitUp);
-    String downKey = getKeyByValue(lenghtvalUnit, lengthUnitDowm);
-
-    if (upText == 'up') {
-      double result = convertLength(double.parse(calUpText), upKey, downKey);
-
-      setState(() {
-        calDownText = result.toString();
-      });
-    } else if (upText == 'down') {
-      setState(() {
-        double result =
-            convertLength(double.parse(calDownText), downKey, upKey);
-        calUpText = result.toString();
-      });
-    }
+    _calculateLength();
   }
 
   _allClearText() {
@@ -517,20 +476,30 @@ class _LengthState extends State<Length> {
       }
     });
 
+    _calculateLength();
+  }
+
+  void _calculateLength() {
     String upKey = getKeyByValue(lenghtvalUnit, lengthUnitUp);
     String downKey = getKeyByValue(lenghtvalUnit, lengthUnitDowm);
+
     if (upText == 'up') {
-      double result = convertLength(double.parse(calUpText), upKey, downKey);
+      double result = convertLength(double.parse(calUpText), downKey, upKey);
 
       setState(() {
-        calDownText = result.toString();
+        calDownText = _formatNumber(result);
       });
     } else if (upText == 'down') {
       setState(() {
         double result =
-        convertLength(double.parse(calDownText), downKey, upKey);
-        calUpText = result.toString();
+            convertLength(double.parse(calDownText), upKey, downKey);
+        calUpText = _formatNumber(result);
       });
     }
+  }
+
+  String _formatNumber(double number) {
+    NumberFormat formatter = NumberFormat('#,##0.000', 'en_US');
+    return formatter.format(number);
   }
 }
