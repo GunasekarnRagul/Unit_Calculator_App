@@ -425,24 +425,27 @@ class _LengthState extends State<Length> {
     );
   }
 
+
   void _textColorChange(String place) {
     setState(() {
       if (place == 'up') {
         lengthUpTextColor = Colors.deepOrange;
         lengthDownTextColor = Colors.white;
+        (calUpText.isNotEmpty) ? calUpText = '0' : null;
+
       } else if (place == 'down') {
         lengthDownTextColor = Colors.deepOrange;
         lengthUpTextColor = Colors.white;
+        (calDownText.isNotEmpty) ? calDownText = '0' : null;
+
       }
     });
   }
 
+
   _btnClicked(String text) {
-    if (lengthUpTextColor == Colors.deepOrange) {
-      (calUpText.isNotEmpty) ? calUpText = '0' : calUpText = '';
-    } else if (lengthDownTextColor == Colors.deepOrange) {
-      (calDownText.isNotEmpty) ? calDownText = '0' : calDownText = '';
-    }
+
+
     setState(() {
       calUpText == '0' && upText == 'up' ? calUpText = '' : null;
       calDownText == '0' && upText == 'down' ? calDownText = "" : null;
