@@ -55,7 +55,7 @@ class _LengthState extends State<Length> {
   late String lengthUnitDowm = 'CM';
 
   late String lengthUnitUpText = 'KiloMeter';
-  late String lengthUnitDowmText = 'KiloMeter';
+  late String lengthUnitDowmText = 'CentiMeter';
 
   late Color lengthUpTextColor = Colors.deepOrange;
   late Color lengthDownTextColor = Colors.white;
