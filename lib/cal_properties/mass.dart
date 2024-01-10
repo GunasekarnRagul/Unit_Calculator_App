@@ -7,55 +7,55 @@ import '../MyHomePage.dart';
 import '../responsive/dimensions.dart';
 import '../routes/page_routes.dart';
 
-class Length extends StatefulWidget {
-  const Length({super.key});
+class Mass extends StatefulWidget {
+  const Mass({super.key});
 
   @override
-  State<Length> createState() => _LengthState();
+  State<Mass> createState() => _MassState();
 }
 
-class _LengthState extends State<Length> {
+class _MassState extends State<Mass> {
   Map<String, String> lenghtval = {
-    '0': 'KiloMeter KM',
-    '1': 'Decimeter DM',
-    '2': 'Centimeter CM',
-    '3': 'Millimeter MM',
-    '4': 'Micrometer µm',
-    '5': 'Pico-meter PM',
-    '6': 'Nautical Mile NMI',
-    '7': 'Mile MI',
-    '8': 'Furlong FUR',
+    '0': 'Tonne T',
+    '1': 'Kilogram KG',
+    '2': 'Gram G',
+    '3': 'Milligram MG',
+    '4': 'Microgram µG',
+    '5': 'Quintal Q',
+    '6': 'Pound LB',
+    '7': 'Ounce OZ',
+    '8': 'Carat CT',
   };
 
   Map<String, String> lenghtvalUnit = {
-    '0': 'KM',
-    '1': 'DM',
-    '2': 'CM',
-    '3': 'MM',
-    '4': 'µm',
-    '5': 'PM',
-    '6': 'NMI',
-    '7': 'MI',
-    '8': 'FUR',
+    '0': 'T',
+    '1': 'KG',
+    '2': 'G',
+    '3': 'MG',
+    '4': 'µG',
+    '5': 'Q',
+    '6': 'LB',
+    '7': 'OZ',
+    '8': 'CT',
   };
 
   Map<String, String> lenghtvalText = {
-    '0': 'KiloMeter',
-    '1': 'Decimeter',
-    '2': 'Centimeter',
-    '3': 'Millimeter',
-    '4': 'Micrometer',
-    '5': 'Pico-meter',
-    '6': 'Nautical Mile',
-    '7': 'Mile',
-    '8': 'Furlong',
+    '0': 'Tonne',
+    '1': 'Kilogram',
+    '2': 'Gram',
+    '3': 'Milligram',
+    '4': 'Microgram',
+    '5': 'Quintal',
+    '6': 'Pound',
+    '7': 'Ounce',
+    '8': 'Carat',
   };
 
-  late String lengthUnitUp = 'KM';
-  late String lengthUnitDowm = 'CM';
+  late String lengthUnitUp = 'T';
+  late String lengthUnitDowm = 'KG';
 
-  late String lengthUnitUpText = 'KiloMeter';
-  late String lengthUnitDowmText = 'CentiMeter';
+  late String lengthUnitUpText = 'Tonne';
+  late String lengthUnitDowmText = 'Kilogram';
 
   late Color lengthUpTextColor = Colors.deepOrange;
   late Color lengthDownTextColor = Colors.white;
@@ -75,15 +75,15 @@ class _LengthState extends State<Length> {
   double convertLength(
       double initialValue, String initialUnit, String targetUnit) {
     Map<String, double> conversionFactors = {
-      '0': 1000.0, // 1 Kilometer = 1000 Meters
-      '1': 100.0, // 1 Decimeter = 0.1 Meters
-      '2': 1.0, // 1 Centimeter = 0.01 Meters
-      '3': 0.001, // 1 Millimeter = 0.001 Meters
-      '4': 0.000001, // 1 Micrometer = 0.000001 Meters
-      '5': 1.0e-12, // 1 Pico-meter = 1.0e-12 Meters
-      '6': 1852.0, // 1 Nautical Mile = 1852 Meters
-      '7': 1609.34, // 1 Mile = 1609.34 Meters
-      '8': 201.168 // 1 Furlong = 201.168 Meters
+      '0': 1000000.0,    // 1 Tonne = 1000000 Grams
+      '1': 1000.0,       // 1 KiloGram = 1000 Grams
+      '2': 1.0,          // 1 Gram = 1 Gram
+      '3': 0.001,        // 1 MilliGram = 0.001 Grams
+      '4': 0.000001,     // 1 MicroGram = 0.000001 Grams
+      '5': 100000.0,     // 1 Quintal = 100000 Grams
+      '6': 453592.0,     // 1 Pound = 453592 Grams
+      '7': 28.3495,      // 1 Ounce = 28.3495 Grams
+      '8': 0.2          // 1 Carat = 0.2 Grams
     };
 
     double initialValueInMeters =
@@ -169,7 +169,7 @@ class _LengthState extends State<Length> {
           ),
           title: RichText(
             text: TextSpan(
-              text: 'Length',
+              text: 'Mass',
               style: GoogleFonts.ubuntu(
                   color: Colors.white,
                   fontWeight: FontWeight.w300,

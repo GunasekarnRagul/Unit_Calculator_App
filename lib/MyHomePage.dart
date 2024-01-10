@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:unit_converter/cal_properties/age.dart';
+import 'package:unit_converter/cal_properties/mass.dart';
+import 'package:unit_converter/cal_properties/speed.dart';
+import 'package:unit_converter/cal_properties/temperature.dart';
 import 'package:unit_converter/responsive/dimensions.dart';
 import 'package:unit_converter/routes/page_routes.dart';
 
 import 'cal_properties/Length.dart';
+import 'cal_properties/time.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -57,22 +62,22 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   icons(
-                      icon: Icons.cake,
+                      icon: FontAwesomeIcons.cakeCandles,
                       text: 'AGE',
                       function: () {
                         Navigator.pushReplacement(
                             context, RouteGenerator.createRoute(Age()));
                       }),
-                  icons(icon: Icons.leaderboard,
+                  icons(icon: FontAwesomeIcons.scaleBalanced,
                       text: 'Length', function: ()
                       {
                         Navigator.pushReplacement(context, RouteGenerator.createRoute(const Length()));
                       }),
 
-                  icons(icon: Icons.leaderboard,
-                      text: 'Length', function: ()
+                  icons(icon: FontAwesomeIcons.weightHanging,
+                      text: 'Mass', function: ()
                       {
-                        Navigator.pushReplacement(context, RouteGenerator.createRoute(Length()));
+                        Navigator.pushReplacement(context, RouteGenerator.createRoute(const Mass()));
                       }),
                 ],
               ),
@@ -83,23 +88,22 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
                 children: [
-                  icons(
-                      icon: Icons.cake,
-                      text: 'AGE',
-                      function: () {
-                        Navigator.pushReplacement(
-                            context, RouteGenerator.createRoute(Age()));
-                      }),
-                  icons(icon: Icons.leaderboard,
-                      text: 'Length', function: ()
+                  icons(icon: FontAwesomeIcons.gaugeSimpleHigh,
+                      text: 'Speed', function: ()
                       {
-                        Navigator.pushReplacement(context, RouteGenerator.createRoute(Length()));
+                        Navigator.pushReplacement(context, RouteGenerator.createRoute(const Speed()));
                       }),
 
-                  icons(icon: Icons.leaderboard,
-                      text: 'Length', function: ()
+
+                  icons(icon: FontAwesomeIcons.temperatureFull,
+                      text: 'Temperature', function: ()
                       {
-                        Navigator.pushReplacement(context, RouteGenerator.createRoute(Length()));
+                        Navigator.pushReplacement(context, RouteGenerator.createRoute(const Temperature()));
+                      }),
+                  icons(icon: FontAwesomeIcons.clock,
+                      text: 'Time', function: ()
+                      {
+                        Navigator.pushReplacement(context, RouteGenerator.createRoute(const Time()));
                       }),
                 ],
               ),
@@ -129,7 +133,7 @@ class icons extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
+          FaIcon(
             icon,
             color: Colors.grey,
             size: Dimensions.updateDimensions(context, 'w', 35),

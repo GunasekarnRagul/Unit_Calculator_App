@@ -5,6 +5,8 @@ import 'package:unit_converter/cal_properties/age.dart';
 import 'package:unit_converter/responsive/dimensions.dart';
 import 'package:unit_converter/splash_screen.dart';
 
+import 'cal_properties/mass.dart';
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: "Google Sans Text, Roboto, sans-serif",
       ),
-      home: Length(),
+      home: SplashScreen(),
     );
   }
 }

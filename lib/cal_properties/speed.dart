@@ -7,55 +7,55 @@ import '../MyHomePage.dart';
 import '../responsive/dimensions.dart';
 import '../routes/page_routes.dart';
 
-class Length extends StatefulWidget {
-  const Length({super.key});
+class Speed extends StatefulWidget {
+  const Speed({super.key});
 
   @override
-  State<Length> createState() => _LengthState();
+  State<Speed> createState() => _SpeedState();
 }
 
-class _LengthState extends State<Length> {
+class _SpeedState extends State<Speed> {
   Map<String, String> lenghtval = {
-    '0': 'KiloMeter KM',
-    '1': 'Decimeter DM',
-    '2': 'Centimeter CM',
-    '3': 'Millimeter MM',
-    '4': 'Micrometer µm',
-    '5': 'Pico-meter PM',
-    '6': 'Nautical Mile NMI',
-    '7': 'Mile MI',
-    '8': 'Furlong FUR',
+    '0': 'LightSpeed c',
+    '1': 'Mach MA',
+    '2': 'Meter Per Second M/S',
+    '3': 'Kilometer per Hour KM/H',
+    '4': 'Kilometer per Second KM/S',
+    '5': 'Knot KN',
+    '6': 'Mile per Hour MPH',
+    '7': 'Foot per Second FPS',
+    '8': 'Inch per Second IPS',
   };
 
   Map<String, String> lenghtvalUnit = {
-    '0': 'KM',
-    '1': 'DM',
-    '2': 'CM',
-    '3': 'MM',
-    '4': 'µm',
-    '5': 'PM',
-    '6': 'NMI',
-    '7': 'MI',
-    '8': 'FUR',
+    '0': 'c',
+    '1': 'MA',
+    '2': 'M/S',
+    '3': 'KM/H',
+    '4': 'KM/S',
+    '5': 'KN',
+    '6': 'MPH',
+    '7': 'FPS',
+    '8': 'IPS',
   };
 
   Map<String, String> lenghtvalText = {
-    '0': 'KiloMeter',
-    '1': 'Decimeter',
-    '2': 'Centimeter',
-    '3': 'Millimeter',
-    '4': 'Micrometer',
-    '5': 'Pico-meter',
-    '6': 'Nautical Mile',
-    '7': 'Mile',
-    '8': 'Furlong',
+    '0': 'LightSpeed',
+    '1': 'Mach',
+    '2': 'Meter Per Second',
+    '3': 'Kilometer per Hour',
+    '4': 'Kilometer per Second',
+    '5': 'Knot',
+    '6': 'Mile per Hour',
+    '7': 'Foot per Second ',
+    '8': 'Inch per Second ',
   };
 
-  late String lengthUnitUp = 'KM';
-  late String lengthUnitDowm = 'CM';
+  late String lengthUnitUp = 'c';
+  late String lengthUnitDowm = 'MA';
 
-  late String lengthUnitUpText = 'KiloMeter';
-  late String lengthUnitDowmText = 'CentiMeter';
+  late String lengthUnitUpText = 'LightSpeed';
+  late String lengthUnitDowmText = 'Mach';
 
   late Color lengthUpTextColor = Colors.deepOrange;
   late Color lengthDownTextColor = Colors.white;
@@ -75,15 +75,15 @@ class _LengthState extends State<Length> {
   double convertLength(
       double initialValue, String initialUnit, String targetUnit) {
     Map<String, double> conversionFactors = {
-      '0': 1000.0, // 1 Kilometer = 1000 Meters
-      '1': 100.0, // 1 Decimeter = 0.1 Meters
-      '2': 1.0, // 1 Centimeter = 0.01 Meters
-      '3': 0.001, // 1 Millimeter = 0.001 Meters
-      '4': 0.000001, // 1 Micrometer = 0.000001 Meters
-      '5': 1.0e-12, // 1 Pico-meter = 1.0e-12 Meters
-      '6': 1852.0, // 1 Nautical Mile = 1852 Meters
-      '7': 1609.34, // 1 Mile = 1609.34 Meters
-      '8': 201.168 // 1 Furlong = 201.168 Meters
+      '0': 299792458.0,  // Speed of Light in meters per second
+      '1': 343.0,        // Speed of Sound (Mach 1) in meters per second
+      '2': 1.0,          // Meter Per Second
+      '3': 0.277778,     // Kilometer per Hour
+      '4': 0.000277778,  // Kilometer per Second
+      '5': 0.514444,     // Knot
+      '6': 0.44704,      // Mile per Hour
+      '7': 0.3048,       // Foot per Second
+      '8': 0.0254        // Inch per Second
     };
 
     double initialValueInMeters =
@@ -169,7 +169,7 @@ class _LengthState extends State<Length> {
           ),
           title: RichText(
             text: TextSpan(
-              text: 'Length',
+              text: 'Speed',
               style: GoogleFonts.ubuntu(
                   color: Colors.white,
                   fontWeight: FontWeight.w300,
