@@ -114,6 +114,7 @@ class _AgeState extends State<Age> {
 
     BottomPicker.date(
       title: tittleText,
+      backgroundColor: Colors.black,
       buttonSingleColor: Colors.white,
       iconColor: Colors.black,
       dateOrder: DatePickerDateOrder.dmy,
