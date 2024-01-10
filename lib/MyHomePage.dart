@@ -139,7 +139,7 @@ class icons extends StatelessWidget {
             size: Dimensions.updateDimensions(context, 'w', 35),
           ),
           SizedBox(
-            height: Dimensions.updateDimensions(context, 'h', 5),
+            height: Dimensions.updateDimensions(context, 'h', 15),
           ),
           RichText(
               text: TextSpan(
@@ -148,7 +148,7 @@ class icons extends StatelessWidget {
                       fontSize: Dimensions.updateDimensions(
                         context,
                         'w',
-                        12,
+                        15,
                       ),
                       letterSpacing: 1,
                       color: Colors.white,
